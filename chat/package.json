@@ -1,0 +1,24 @@
+{
+  "name": "chat",
+  "version": "0.0.1",
+  "description": "funny chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Giranda22-Git/ServerProject.git"
+  },
+  "author": "Dimash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Giranda22-Git/ServerProject/issues"
+  },
+  "homepage": "https://github.com/Giranda22-Git/ServerProject#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-webserver": "^0.9.1"
+  }
+}
