@@ -1,29 +1,74 @@
-const { watch, series, gulp } = require('gulp');
-const { src, dest } = require('gulp')
-const webserver = require('gulp-webserver');
+'use strict'
+
+const 
+  { watch, series, gulp, src, dest } = require('gulp'),
+  rename = require('gulp-rename'),
+  minifyCss = require('gulp-minify-css'),
+  minifyHtml = require('gulp-minify-html'),
+  minify = require('gulp-minify'),
+  sass = require('gulp-sass'),
+  webServer = require('gulp-webserver')
+;
 
 function html(){
     return src('src/*.html')
-        .pipe(dest('app/'))
+      .pipe(minifyHtml({comments:true,spare:true}))
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(dest('app/'))
 }
 
-//gulp.task('default', function() {
- // gulp.src('app')
- //   .pipe(webserver({
-  //    livereload: true,
-  //    directoryListing: true,
-  //    fallback: 'index.html'
-  //  }));
-//});
+function css(){
+  return src('src/styles/css/**/*.css')
+    .pipe(minifyCss({keepBreaks: true}))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(dest('app/styles/css/'))
+}
 
-exports.default = function() {
-    watch('src/*.html', html);
+function scss(){
+  return src(['src/styles/sass/**/*.scss', 'src/styles/sass/**/*.sass'])
+    .pipe(sass({ 
+      errLogToConsole: true,
+      outputStyle: 'compressed'
+    }))
+    .on('error', console.error.bind(console))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(dest('app/styles/sass/'))
+}
 
-    //watch('src/styles/**/*.css', css);
-    //watch('src/styles/**/*.scss', css);
+function scripts(){
+  return src('src/scripts/*.js')
+    .pipe(minify())
+    .pipe(dest('app/scripts/'))
+}
 
-    //watch('src/scripts/**/*.js', scripts);
-    //watch('src/assets/**/*', assets);
+function assets(){
+  return src([
+    'src/assets/**/*.png',
+    'src/assets/**/*.jpg',
+    'src/assets/**/*.jpeg',
+    'src/assets/**/*.ico'
+  ])
+    .pipe(dest('app/assets'))
+}
 
-    //watch('src/*.js', series(clean, javascript));
-  };
+function nodeWebServer() {
+  src('app')
+  .pipe(webServer({
+    livereload: true,
+    directoryListing: true,
+    fallback: 'index.min.html'
+  }));
+};
+
+function watching(){
+  watch('src/*.html', html);
+
+  watch('src/styles/**/*.css', css);
+  watch('src/styles/**/*.scss', scss);
+  watch('src/styles/**/*.sass', scss);
+
+  watch('src/scripts/**/*.js', scripts);
+  watch('src/assets/**/*', assets);
+}
+
+exports.default = series(watching, nodeWebServer);
