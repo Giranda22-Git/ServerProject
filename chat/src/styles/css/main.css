@@ -1,4 +1,138 @@
+/* import of Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+
+/* Static Settings */
+*{
+    border: 1px solid red;
+}
+
 body{
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
+
+ul{ margin: 0; padding: 0 }
+
+.absolute{ position: absolute }
+.relative{ position: relative }
+
+/* Header */
+header *, header{
+    border: none;
+}
+
+header{
+    width: 100vw;
+    height: 5vh;
+    display: flex;
+    box-shadow: 0 0 10px black;
+}
+
+header .logo{
+    width: 20%;
+    font-family: 'Metal Mania', cursive;
+    font-size: 5vh;
+    height: 100%;
+    float: left;
+    text-align: center;
+    line-height: 100%;
+}
+
+header .currentUser{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    padding-right: 4.5%;
+}
+
+header .userName{
+    width: 95%;
+    height:100%;
+    text-align: right;
+    font-size: 3vh;
+    text-transform: capitalize;
+    line-height: 155%;
+    padding-right: 2%;
+}
+
+header .logoUser{
+    width: 3%;
+    height:85%;
+    top: 5%;
+    right: 5%;
+    border-radius: 50%;
+    background: url( ../../assets/avatarko_anonim.jpg ) center no-repeat;
+    background-size: cover;
+}
+
+header .header-chevron-down{
+    width: 1%;
+    height: 30%;
+    right: 3.5%;
+    top: 35%;
+}
+
+header .shadowMenu{
+    right: 3.4%;
+    top: 100%;
+    width: 11%;
+    height: auto;
+    display: none;
+}
+
+header .currentUser:hover > .shadowMenu{
+    display: block;
+}
+
+header .shadowMenu ul{
+    list-style-type: none;
+    cursor: pointer;
+}
+
+header .shadowMenu ul li{
+    width: 100%;
+    height: 3vh;
+    font-size: 2vh;
+    display: flex;
+    line-height: 150%;
+    border-bottom: 1px solid silver;
+}
+
+header .exitText{
+    width: 80%;
+    height: 100%;
+    right: 0;
+    text-indent: 5%;
+}
+
+header .close-door{
+    width: 20%;
+    height: 80%;
+    left: 0;
+    top: 10%;
+}
+
+header .settingsIco{
+    width: 20%;
+    height: 80%;
+    left: 0;
+    top: 10%;
+}
+
+header .settingsText{
+    width: 80%;
+    height: 100%;
+    right: 0;
+    text-indent: 5%;
+}
+/* ------------------------------ */
+
+/* Section of Chat */
+
+.sectionOfChat{
+    width:100%;
+    height:80vh;
+    
+}
+

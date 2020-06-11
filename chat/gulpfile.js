@@ -51,7 +51,7 @@ function assets(){
     .pipe(dest('app/assets'))
 }
 
-function nodeWebServer() {
+function gulpWebServer() {
   src('app')
   .pipe(webServer({
     livereload: true,
@@ -71,4 +71,4 @@ function watching(){
   watch('src/assets/**/*', assets);
 }
 
-exports.default = series(watching, nodeWebServer);
+exports.default = watching;
