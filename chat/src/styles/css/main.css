@@ -145,8 +145,20 @@ header .settingsText{
 
 .participants{
     width: 20vw;
-    height: 40vh;
-    background: rgba(255,255,255,1)
+    height: 80%;
+    background: rgba(255,255,255,1);
+    top: 10%;
+    left:15%;
+    border-radius: 4%;
+}
+
+.chat-area{
+    width: 50vw;
+    height: 80%;
+    background: rgba(255,255,255,1);
+    top: 10%;
+    left: 40%;
+    border-radius: 5%;
 }
 
 /* ---------- / Section of Chat */

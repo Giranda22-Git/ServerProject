@@ -1,13 +1,14 @@
 'use strict'
 
 const 
-  { watch, series, gulp, src, dest } = require('gulp'),
+  { watch, series, gulp, src, dest, parallel } = require('gulp'),
   rename = require('gulp-rename'),
   minifyCss = require('gulp-minify-css'),
   minifyHtml = require('gulp-minify-html'),
   minify = require('gulp-minify'),
   sass = require('gulp-sass'),
-  webServer = require('gulp-webserver')
+  webServer = require('gulp-webserver'),
+  babel = require('gulp-babel')
 ;
 
 function html(){
@@ -37,6 +38,9 @@ function scss(){
 
 function scripts(){
   return src('src/scripts/*.js')
+    .pipe(babel({
+      presets: ['@babel/env']
+    }))
     .pipe(minify())
     .pipe(dest('app/scripts/'))
 }
@@ -54,8 +58,12 @@ function assets(){
 function gulpWebServer() {
   src('app')
   .pipe(webServer({
+    host: '0.0.0.0',
     livereload: true,
-    directoryListing: true,
+    directoryListing: {
+      enable: true,
+      path: './app/index.min.html'
+    },
     fallback: 'index.min.html'
   }));
 };
@@ -71,4 +79,4 @@ function watching(){
   watch('src/assets/**/*', assets);
 }
 
-exports.default = series(gulpWebServer, watching);
+exports.default = parallel(watching, gulpWebServer);

@@ -18,7 +18,10 @@
   "homepage": "https://github.com/Giranda22-Git/ServerProject#readme",
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
     "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
     "gulp-minify": "^3.1.0",
     "gulp-minify-css": "^1.2.4",
     "gulp-minify-html": "^1.0.6",

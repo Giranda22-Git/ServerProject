@@ -14,7 +14,7 @@ $(document).ready(function(){
             particleColor       : `rgba(255,40,40,1)`,
             particleRadius      : 1,
             particleCount       : 260,
-            particleMaxVelocity : 1,
+            particleMaxVelocity : 1,   
             lineLength          : 200
 
         }
