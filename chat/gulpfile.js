@@ -71,4 +71,4 @@ function watching(){
   watch('src/assets/**/*', assets);
 }
 
-exports.default = watching;
+exports.default = series(gulpWebServer, watching);

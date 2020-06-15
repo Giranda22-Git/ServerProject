@@ -1,12 +1,13 @@
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/css/main.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <header>
+    <header class="relative">
         <div class="logo">
             Chatic
         </div>
@@ -40,9 +41,16 @@
             </div>
         </div>
     </header>
-    <section src="sectionOfChat">
-        
+    <section class="sectionOfChat">
+        <canvas id="canvasBg"></canvas>
+        <div class="participants">
+            
+        </div>
     </section>
+    <footer class="relative">
+        <h3 class="absolute">Created with support "Dimsah ICO"</h3>
+    </footer>
 <script src="scripts/main-min.js"></script>
+<script src="scripts/canvasBg-min.js"></script>
 </body>
 </html>
